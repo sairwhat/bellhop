@@ -126,7 +126,9 @@ Rules:
 
 - Lavender (around `#7C6AF0`) is an **accent**: primary buttons, one hero
   element, section tints. Not full-bleed washes.
-- Typography with character — **General Sans**. Not Inter.
+- Typography with character — **Instrument Sans** for text, Geist Mono for small
+  labels. Not Inter. (General Sans was the original pick; it is not available
+  through `next/font/google`, so this is the nearest equivalent.)
 - Warm off-white canvas, not pure white. Strict grid, generous whitespace.
 - **No floating blurred orbs. No glassmorphism.**
 - One deliberate moment of motion — the photograph resolving into the table —
