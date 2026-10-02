@@ -2,7 +2,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-header backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line bg-header">
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5">
         <a href="#top" className="flex items-center gap-2.5">
           <span className="grid size-7 place-items-center rounded-[8px] bg-lavinder text-[14px] font-semibold text-canvas">

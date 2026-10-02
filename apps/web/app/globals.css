@@ -19,7 +19,12 @@
 
   /* Translucent header background. A dedicated token because `bg-canvas/80`
      compiles to a color-mix with a hardcoded dark hex fallback, which would
-     stay dark in light mode on browsers without color-mix support. */
+     stay dark in light mode on browsers without color-mix support.
+
+     No backdrop-filter here on purpose. `position: sticky` combined with
+     `backdrop-filter` hit-tests incorrectly on real mobile browsers and
+     swallows taps, while working fine under desktop device emulation. It is
+     also expensive to composite on a phone GPU. */
   --color-header: #0b0b0dcc;
 
   --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
