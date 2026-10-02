@@ -59,13 +59,15 @@ export function Features() {
               Ask your notes, not the internet.
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted">
-              Answers come from lecture notes you already took, and it tells you which ones
-              it used. No generic summaries of a topic you have not studied yet.
+              The model answers only from lecture notes you already took, and tells you
+              which ones it used. No generic summaries of a topic you have not studied yet.
             </p>
           </div>
 
           <div className="glass-inset rounded-[20px] p-6">
-            <p className="font-mono text-[10px] tracking-[0.12em] text-faint">ASK YOUR NOTES</p>
+            <p className="font-mono text-[10px] tracking-[0.12em] text-faint">
+              AI · GROUNDED IN YOUR NOTES
+            </p>
 
             <p className="mt-4 inline-block rounded-full bg-lavender/12 px-4 py-2.5 text-[14px] leading-relaxed text-lavender-soft">
               What did my professor say about rate limiting?

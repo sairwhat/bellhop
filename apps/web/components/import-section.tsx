@@ -9,13 +9,13 @@ const STEPS = [
   },
   {
     n: "02",
-    title: "Read the text",
-    body: "On-device OCR pulls the raw characters out first. Cheap, offline, and it keeps the original evidence.",
+    title: "Read the characters",
+    body: "On-device OCR pulls the raw text out first. Cheap, fast, works with no signal, and it keeps the original evidence around.",
   },
   {
     n: "03",
-    title: "Sorted into a week",
-    body: "Courses, rooms, and times get parsed out. Anything ambiguous is flagged for you instead of guessed at.",
+    title: "Let the model read the grid",
+    body: "OCR gives you a wall of text with the columns already scrambled. The model works out that Tuesday's column is Tuesday, that M241 is Calculus II, and that Sci-112 is a room rather than a time. Anything it is unsure about gets flagged instead of guessed.",
   },
 ];
 
@@ -24,8 +24,12 @@ export function Import() {
     <section id="how" className="mx-auto max-w-6xl px-5 py-24">
       <div className="rise max-w-2xl">
         <h2 className="text-[1.9rem] leading-[1.08] font-medium tracking-[-0.025em] text-balance sm:text-[2.6rem]">
-          Three steps, about four seconds.
+          OCR gets the characters. AI reads the grid.
         </h2>
+        <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">
+          Text extraction is the easy half. The reason a photo becomes a usable week is
+          that a model interprets the layout the same way you would.
+        </p>
       </div>
 
       <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -40,7 +44,9 @@ export function Import() {
 
       <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
         <div className="glass glass-edge-light rise rounded-[22px] p-5">
-          <p className="font-mono text-[10px] tracking-[0.12em] text-faint">OCR TEXT</p>
+          <p className="font-mono text-[10px] tracking-[0.12em] text-faint">
+            STEP 2 · OCR TEXT
+          </p>
           <pre className="mt-3 overflow-x-auto font-mono text-[9.5px] leading-[1.85] text-muted">
             {OCR_TEXT.map((line) => (
               <span key={line} className="block whitespace-pre">
@@ -52,6 +58,9 @@ export function Import() {
 
         <div className="glass glass-edge-light rise rounded-[22px] p-2.5">
           <WeekGrid />
+          <p className="px-2.5 pt-2.5 pb-1 text-center font-mono text-[9.5px] tracking-[0.12em] text-faint">
+            STEP 3 · STRUCTURED BY AI
+          </p>
         </div>
       </div>
     </section>
