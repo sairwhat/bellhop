@@ -12,7 +12,7 @@ export function Hero() {
         </h1>
 
         <p className="mt-7 max-w-lg text-[16px] leading-relaxed text-muted">
-          Photograph the grid your school printed. Bellhop reads the text, sorts it into
+          Photograph the grid your school printed. Schedly reads the text, sorts it into
           an editable week, and keeps your focus blocks and tasks attached to it.
         </p>
 

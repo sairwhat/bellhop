@@ -8,7 +8,7 @@ export function Nav() {
           <span className="grid size-7 place-items-center rounded-full bg-lavender text-[13px] font-semibold text-canvas">
             B
           </span>
-          <span className="text-[14px] font-medium tracking-tight">Bellhop</span>
+          <span className="text-[14px] font-medium tracking-tight">Schedly</span>
         </a>
 
         <div className="hidden items-center gap-7 text-[13px] text-muted sm:flex">

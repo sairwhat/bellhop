@@ -14,7 +14,7 @@ const mono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bellhop — Your schedule, typed for you",
+  title: "Schedly — Your schedule, typed for you",
   description:
     "Photograph the grid your school printed and get an editable timetable in seconds. Focus blocks, tasks, and an AI tutor that reads your own notes.",
 };
