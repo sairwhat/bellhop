@@ -17,6 +17,11 @@
 
   --color-paper: #1a1a1f;
 
+  /* Translucent header background. A dedicated token because `bg-canvas/80`
+     compiles to a color-mix with a hardcoded dark hex fallback, which would
+     stay dark in light mode on browsers without color-mix support. */
+  --color-header: #0b0b0dcc;
+
   --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
@@ -28,6 +33,32 @@
 
 :root {
   color-scheme: dark;
+}
+
+/* Light theme. Same cool-neutral family as the dark palette on purpose, so the
+   page never shifts temperature when you toggle. Every token is overridden:
+   a missed one leaks a dark value into light mode.
+
+   Contrast checked against WCAG AA: ink 16:1, muted 7.2:1, faint 4.9:1,
+   white on the lavender fill 6.4:1. */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --color-canvas: #f7f7f9;
+  --color-surface: #fbfbfc;
+  --color-raised: #eeeef2;
+  --color-ink: #15151a;
+  --color-muted: #57555f;
+  --color-faint: #6c6a76;
+  --color-line: #e2e2e8;
+
+  --color-lavender: #5b4bd6;
+  --color-lavender-soft: #4f3fc4;
+  --color-lavender-wash: #f0eefc;
+  --color-lavender-edge: #d9d4f6;
+
+  --color-paper: #f3f3f6;
+  --color-header: #f7f7f9cc;
 }
 
 html {
