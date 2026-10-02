@@ -53,7 +53,7 @@ export function TasksCard() {
           <li key={task.label} className="flex items-center gap-3">
             <span
               aria-hidden
-              className="grid size-[18px] shrink-0 place-items-center rounded-[6px] border border-white/15"
+              className="grid size-[18px] shrink-0 place-items-center rounded-[6px] border border-line"
               style={{ background: task.done ? "var(--color-lavender)" : "transparent" }}
             >
               {task.done && (

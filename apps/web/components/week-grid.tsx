@@ -1,30 +1,42 @@
-import { DAY_NAMES, HOUR_LABELS, SLOT_COUNT, WEEK, type Block } from "@/lib/demo-data";
+import { DAY_NAMES, HOUR_LABELS, WEEK, type Block } from "@/lib/demo-data";
 
-const ROW = 26;
+const ROW = 32;
+const FIRST_HOUR = 8;
+
+function slotToTime(slot: number) {
+  const hour = FIRST_HOUR + Math.floor(slot / 2);
+  const minutes = slot % 2 === 0 ? "00" : "30";
+  const display = hour > 12 ? hour - 12 : hour;
+  return `${display}:${minutes}`;
+}
 
 export function WeekGrid() {
   return (
-    <div className="glass-inset overflow-hidden rounded-2xl">
-      <div className="flex items-center justify-between border-b border-white/8 px-4 py-2.5">
-        <p className="text-[12px] font-medium">Fall term</p>
-        <p className="font-mono text-[9.5px] tracking-[0.12em] text-faint">
+    <div
+      className="overflow-hidden rounded-2xl ring-1 ring-line"
+      style={{ background: "var(--color-screen)" }}
+    >
+      <div className="flex items-center justify-between border-b border-line px-5 py-3">
+        <p className="text-[13px] font-medium">Fall term</p>
+        <p className="font-mono text-[10px] tracking-[0.1em] text-faint">
           {WEEK.length} CLASSES
         </p>
       </div>
 
-      <div className="overflow-x-auto">
+      {/* Below md a five column grid cannot hold a course name legibly, so the
+          same data renders as a day-by-day agenda rather than a squeezed grid. */}
+      <div className="hidden md:block">
         <div
-          className="min-w-[44rem] p-3.5"
+          className="grid p-4"
           style={{
-            display: "grid",
-            gridTemplateColumns: "3rem repeat(5, minmax(0, 1fr))",
+            gridTemplateColumns: "3.75rem repeat(5, minmax(0, 1fr))",
             gridAutoRows: `${ROW}px`,
-            columnGap: "5px",
+            columnGap: "8px",
           }}
         >
           <div />
           {DAY_NAMES.map((day) => (
-            <p key={day} className="pb-1.5 text-[10.5px] font-medium tracking-wide text-muted">
+            <p key={day} className="pb-2 text-[11px] font-medium tracking-wide text-muted">
               {day}
             </p>
           ))}
@@ -32,28 +44,20 @@ export function WeekGrid() {
           {HOUR_LABELS.map((hour) => (
             <p
               key={hour.slot}
-              className="font-mono text-[9px] leading-none text-faint"
+              className="font-mono text-[10px] leading-none text-faint"
               style={{ gridRow: hour.slot + 2, gridColumn: 1 }}
             >
               {hour.label}
             </p>
           ))}
 
-          {DAY_NAMES.map((day, i) => (
+          {/* Hour rules only. Half hour lines were noise behind the blocks. */}
+          {HOUR_LABELS.map((hour) => (
             <div
-              key={`r-${day}`}
+              key={`r-${hour.slot}`}
               aria-hidden
-              className="border-l border-white/8"
-              style={{ gridRow: `2 / span ${SLOT_COUNT}`, gridColumn: i + 2 }}
-            />
-          ))}
-
-          {Array.from({ length: SLOT_COUNT }, (_, i) => (
-            <div
-              key={`h-${i}`}
-              aria-hidden
-              className="border-t border-white/6"
-              style={{ gridRow: i + 2, gridColumn: "2 / span 5", opacity: i % 2 === 0 ? 0.9 : 0.3 }}
+              className="border-t border-line"
+              style={{ gridRow: hour.slot + 2, gridColumn: "2 / span 5" }}
             />
           ))}
 
@@ -62,24 +66,66 @@ export function WeekGrid() {
           ))}
         </div>
       </div>
+
+      <ul className="divide-y divide-line md:hidden">
+        {DAY_NAMES.map((day, i) => {
+          const items = WEEK.filter((b) => b.day === i).sort((a, b) => a.slot - b.slot);
+          if (!items.length) return null;
+
+          return (
+            <li key={day} className="px-5 py-4">
+              <p className="text-[11px] font-medium tracking-wide text-muted">{day}</p>
+              <ul className="mt-2.5 space-y-2">
+                {items.map((block) => (
+                  <li key={`${block.code}-${block.slot}`} className="flex items-center gap-3">
+                    <span
+                      aria-hidden
+                      className="h-9 w-[3px] shrink-0 rounded-full"
+                      style={{ background: block.color }}
+                    />
+                    <span className="w-[42px] shrink-0 font-mono text-[10.5px] text-faint">
+                      {slotToTime(block.slot)}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-[13.5px] leading-tight font-medium">
+                        {block.course}
+                      </span>
+                      <span className="block truncate font-mono text-[10px] text-faint">
+                        {block.code} · {block.room}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
 
 function Cell({ block }: { block: Block }) {
+  // Short blocks cannot carry two lines, so the room drops out rather than
+  // being clipped through the middle.
+  const compact = block.span <= 2;
+
   return (
     <div
-      className="m-[1px] flex flex-col justify-center overflow-hidden rounded-[7px] px-1.5 py-0.5"
+      className="m-[2px] flex flex-col justify-center overflow-hidden rounded-lg px-2 py-1"
       style={{
         gridRow: `${block.slot + 2} / span ${block.span}`,
         gridColumn: block.day + 2,
-        background: `color-mix(in oklab, ${block.color} 26%, transparent)`,
-        boxShadow: `inset 2px 0 0 0 ${block.color}`,
+        background: `color-mix(in oklab, ${block.color} 26%, var(--color-screen))`,
+        boxShadow: `inset 3px 0 0 0 ${block.color}`,
       }}
     >
-      <p className="truncate text-[10.5px] leading-tight font-medium">{block.course}</p>
-      <p className="truncate font-mono text-[8.5px] leading-tight text-muted">{block.code}</p>
-      <p className="truncate font-mono text-[8.5px] leading-tight text-faint">{block.room}</p>
+      <p className="truncate text-[11.5px] leading-tight font-medium">{block.course}</p>
+      {!compact && (
+        <p className="truncate font-mono text-[9.5px] leading-tight text-muted">
+          {block.code} · {block.room}
+        </p>
+      )}
     </div>
   );
 }

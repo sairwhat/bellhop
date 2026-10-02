@@ -22,7 +22,7 @@ export function Features() {
               ["Term boundaries", "Per course"],
               ["Colour coding", "Automatic"],
             ].map(([term, value]) => (
-              <div key={term} className="flex items-baseline justify-between border-b border-white/8 pb-3">
+              <div key={term} className="flex items-baseline justify-between border-b border-line pb-3">
                 <dt className="text-[13.5px] text-muted">{term}</dt>
                 <dd className="font-mono text-[11px] text-faint">{value}</dd>
               </div>
@@ -83,7 +83,7 @@ export function Features() {
               </p>
             </div>
 
-            <p className="mt-5 border-t border-white/8 pt-4 font-mono text-[10px] tracking-[0.12em] text-faint">
+            <p className="mt-5 border-t border-line pt-4 font-mono text-[10px] tracking-[0.12em] text-faint">
               3 SOURCES · CHEM 221
             </p>
           </div>

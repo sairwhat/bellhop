@@ -31,7 +31,7 @@ export function ThemeToggle() {
       }}
       aria-label={label}
       title={label}
-      className="grid size-11 shrink-0 place-items-center rounded-full border border-white/12 text-muted transition-colors hover:text-ink active:scale-95 md:size-10"
+      className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-muted transition-colors hover:text-ink active:scale-95 md:size-10"
     >
       {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
     </button>
