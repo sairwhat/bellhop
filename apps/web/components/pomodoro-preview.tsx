@@ -1,9 +1,6 @@
 export function PomodoroPreview() {
-  const minutes = 24;
-  const seconds = 18;
-
   return (
-    <div className="rounded-[var(--radius-card)] border border-line bg-surface p-5">
+    <div className="rounded-[var(--radius-panel)] bg-surface p-5 ring-1 ring-line">
       <div className="flex items-center gap-4">
         <div className="relative grid size-16 shrink-0 place-items-center">
           <svg viewBox="0 0 36 36" className="size-16 -rotate-90">
@@ -24,13 +21,13 @@ export function PomodoroPreview() {
         </div>
 
         <div className="min-w-0">
-          <p className="font-mono text-[10px] tracking-[0.14em] text-faint">
+          <p className="font-mono text-[9px] tracking-[0.16em] text-faint">
             FOCUS · BLOCK 2 OF 4
           </p>
-          <p className="mt-1 font-mono text-2xl tracking-tight text-ink tabular-nums">
-            {minutes}:{String(seconds).padStart(2, "0")}
+          <p className="mt-1.5 font-mono text-2xl tracking-tight text-ink tabular-nums">
+            24:18
           </p>
-          <p className="mt-0.5 text-[12px] text-muted">Organic Chemistry</p>
+          <p className="mt-0.5 text-[12.5px] text-muted">Organic Chemistry</p>
         </div>
       </div>
     </div>

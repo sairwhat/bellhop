@@ -1,23 +1,23 @@
 export function NotesPreview() {
   return (
-    <div className="rounded-[var(--radius-card)] border border-line bg-surface p-5">
-      <div className="rounded-[10px] bg-lavender-wash px-3 py-2 text-[13px] text-lavender-deep">
+    <div className="rounded-[var(--radius-panel)] bg-surface p-6 ring-1 ring-line sm:p-8">
+      <div className="rounded-[var(--radius-inner)] bg-lavender-wash px-4 py-3 text-[14px] leading-relaxed text-lavender-soft">
         What did my professor say about rate limiting?
       </div>
 
-      <div className="mt-3 space-y-2 text-[13px] leading-relaxed text-muted">
+      <div className="mt-6 space-y-3.5 text-[14px] leading-relaxed text-muted">
         <p>
           From your Chem 221 notes, 4 October: a reaction is rate-limited when the
-          slowest step sets the pace, and the rate depends on the concentrations of
-          everything before that step.
+          slowest step sets the pace, so the rate depends on everything before that
+          step.
         </p>
         <p>
-          You highlighted the part about the first step being slow because the bond
+          You underlined the part about the first step being slow, because the bond
           rearrangement needs a lot of energy.
         </p>
       </div>
 
-      <p className="mt-3 font-mono text-[9px] tracking-[0.14em] text-faint">
+      <p className="mt-6 font-mono text-[9px] tracking-[0.16em] text-faint">
         FROM YOUR NOTES · 3 SOURCES
       </p>
     </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -14,9 +14,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bellhop — Photograph your schedule, get a clean timetable",
+  title: "Bellhop — Your schedule, typed for you",
   description:
-    "Snap a photo of the schedule your school handed you and get an editable timetable in seconds. Plus a pomodoro timer, to-do list, and an AI tutor that reads your own notes.",
+    "Snap a photo of the schedule your school printed and get an editable timetable in seconds. Pomodoro, tasks, and an AI tutor that reads your own notes.",
+};
+
+// themeColor belongs to the viewport export, not metadata. Without it mobile
+// browsers paint their own chrome white and flash on load.
+export const viewport: Viewport = {
+  themeColor: "#0b0b0d",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -25,7 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${instrumentSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-canvas text-ink">{children}</body>
+      <body className="flex min-h-full flex-col bg-canvas font-sans text-ink">
+        {children}
+      </body>
     </html>
   );
 }
