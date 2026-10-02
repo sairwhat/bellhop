@@ -1,6 +1,6 @@
 import { DAY_NAMES, HOUR_LABELS, WEEK, type Block } from "@/lib/demo-data";
 
-const ROW = 32;
+const ROW = 28;
 const FIRST_HOUR = 8;
 
 function slotToTime(slot: number) {
@@ -120,7 +120,7 @@ function Cell({ block }: { block: Block }) {
         boxShadow: `inset 3px 0 0 0 ${block.color}`,
       }}
     >
-      <p className="truncate text-[11.5px] leading-tight font-medium">{block.course}</p>
+      <p className="truncate text-[12px] leading-tight font-medium">{block.course}</p>
       {!compact && (
         <p className="truncate font-mono text-[9.5px] leading-tight text-muted">
           {block.code} · {block.room}
