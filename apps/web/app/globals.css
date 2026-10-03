@@ -28,7 +28,7 @@
   --glass-highlight: rgb(255 255 255 / 0.16);
   --glass-sheen: inset 0 1px 0 0 var(--glass-highlight);
   --glass-drop: 0 28px 70px -28px rgb(0 0 0 / 0.75);
-  --glass-blur: 28px;
+  --glass-blur: 20px;
 
   --grain-opacity: 0.05;
   --field-1: rgb(109 92 240 / 0.5);
@@ -57,7 +57,7 @@
   --glass-edge: rgb(255 255 255 / 0.85);
   --glass-highlight: rgb(255 255 255 / 0.95);
   --glass-drop: 0 24px 60px -30px rgb(20 20 40 / 0.35);
-  --glass-blur: 24px;
+  --glass-blur: 16px;
 
   --grain-opacity: 0.035;
   --field-1: rgb(140 124 255 / 0.4);
@@ -195,6 +195,16 @@ body {
   [data-theme="light"] .glass-inset {
     background: rgb(255 255 255 / 0.45);
     border: 1px solid rgb(255 255 255 / 0.7);
+  }
+
+  /* Opaque variant. Anything that is position: fixed must use this instead of
+     .glass: a fixed element sits still while its backdrop rushes past, which
+     forces a re-blur every frame and leaves a smeared ghost of the backdrop
+     behind it after a fast scroll. */
+  .solid-surface {
+    background: var(--color-raised);
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-sheen), var(--glass-drop);
   }
 
   .btn-primary {

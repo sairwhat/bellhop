@@ -35,7 +35,7 @@ export function BackToTop() {
       onClick={goTop}
       aria-label="Back to top"
       title="Back to top"
-      className={`glass glass-edge-light fixed right-4 bottom-4 z-50 grid size-11 place-items-center rounded-full text-ink transition-all duration-300 active:scale-95 sm:right-6 sm:bottom-6 ${
+      className={`solid-surface fixed right-4 bottom-4 z-50 grid size-11 place-items-center rounded-full text-ink transition-all duration-300 active:scale-95 sm:right-6 sm:bottom-6 ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       }`}
     >
