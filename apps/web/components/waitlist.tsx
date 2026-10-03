@@ -6,7 +6,8 @@ export function Waitlist() {
           Photograph your schedule tonight.
         </h2>
         <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-          Android first, then iOS. Your timetable, focus blocks, and tasks in one place.
+          No retyping, no guessing what P4 is. When something looks wrong, Bellhop asks
+          instead of quietly picking for you.
         </p>
       </div>
     </section>
