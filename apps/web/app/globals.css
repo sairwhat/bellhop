@@ -135,77 +135,83 @@ body {
 }
 
 /* --- The material ------------------------------------------------------ */
-.glass {
-  position: relative;
-  background: var(--glass-fill);
-  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  border: 1px solid var(--glass-edge);
-  box-shadow: var(--glass-sheen), var(--glass-drop);
-}
+/* --- The material ------------------------------------------------------
+   These live in @layer components on purpose. Unlayered CSS outranks every
+   layer, so declaring .glass outside a layer made its `position: relative`
+   beat Tailwind's `.fixed` utility, and the back-to-top button rendered in
+   normal flow instead of pinned to the viewport. */
+@layer components {
+  .glass {
+    position: relative;
+    background: var(--glass-fill);
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-sheen), var(--glass-drop);
+  }
 
-/* Light catching the top edge of a physical pane. The single detail that
-   separates glass from a translucent rectangle. */
-.glass-edge-light::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(
-    160deg,
-    rgb(255 255 255 / 0.34),
-    transparent 38%,
-    transparent 62%,
-    rgb(255 255 255 / 0.12)
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
+  /* Light catching the top edge of a physical pane. The single detail that
+     separates glass from a translucent rectangle. */
+  .glass-edge-light::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      160deg,
+      rgb(255 255 255 / 0.34),
+      transparent 38%,
+      transparent 62%,
+      rgb(255 255 255 / 0.12)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 
-.glass-hover {
-  transition:
-    background var(--glass-fill),
-    transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
-}
+  .glass-hover {
+    transition:
+      transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-.glass-hover:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    var(--glass-sheen),
-    0 40px 90px -30px rgb(0 0 0 / 0.8);
-}
+  .glass-hover:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      var(--glass-sheen),
+      0 40px 90px -30px rgb(0 0 0 / 0.8);
+  }
 
-/* Inner panel: glass stacked on glass, the way layered UI actually looks. */
-.glass-inset {
-  background: rgb(255 255 255 / 0.035);
-  border: 1px solid rgb(255 255 255 / 0.07);
-}
+  /* Inner panel: glass stacked on glass, the way layered UI actually looks. */
+  .glass-inset {
+    background: rgb(255 255 255 / 0.035);
+    border: 1px solid rgb(255 255 255 / 0.07);
+  }
 
-[data-theme="light"] .glass-inset {
-  background: rgb(255 255 255 / 0.45);
-  border: 1px solid rgb(255 255 255 / 0.7);
-}
+  [data-theme="light"] .glass-inset {
+    background: rgb(255 255 255 / 0.45);
+    border: 1px solid rgb(255 255 255 / 0.7);
+  }
 
-.btn-primary {
-  background: var(--color-lavender);
-  color: var(--color-canvas);
-  transition:
-    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 200ms ease;
-}
+  .btn-primary {
+    background: var(--color-lavender);
+    color: var(--color-canvas);
+    transition:
+      transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+      filter 200ms ease;
+  }
 
-.btn-primary:hover {
-  filter: brightness(1.08);
-}
+  .btn-primary:hover {
+    filter: brightness(1.08);
+  }
 
-.btn-primary:active {
-  transform: scale(0.98);
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
 }
 
 /* Scroll-driven entrance. Chrome 115+. Sections lift in as they arrive,
