@@ -6,7 +6,10 @@ const TASKS = [
 
 export function FocusCard() {
   return (
-    <article className="glass glass-edge-light glass-hover rise rounded-[22px] p-6">
+    <article
+      data-d="1"
+      className="glass glass-edge-light glass-hover rise rounded-[22px] p-6"
+    >
       <div className="flex items-center justify-between">
         <p className="font-mono text-[10px] tracking-[0.12em] text-faint">FOCUS</p>
         <p className="font-mono text-[10px] text-faint">BLOCK 2 / 4</p>
@@ -42,7 +45,10 @@ export function FocusCard() {
 
 export function TasksCard() {
   return (
-    <article className="glass glass-edge-light glass-hover rise rounded-[22px] p-6">
+    <article
+      data-d="2"
+      className="glass glass-edge-light glass-hover rise rounded-[22px] p-6"
+    >
       <div className="flex items-center justify-between">
         <p className="font-mono text-[10px] tracking-[0.12em] text-faint">TASKS</p>
         <p className="font-mono text-[10px] text-faint">2 / 3</p>

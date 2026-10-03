@@ -40,9 +40,10 @@ export function Import() {
       {/* Plain rows rather than three separate cards. Same information, far less
           repeated surface. */}
       <ol className="mt-12 divide-y divide-line border-y border-line">
-        {STEPS.map((step) => (
+        {STEPS.map((step, index) => (
           <li
             key={step.n}
+            data-d={String(index)}
             className="rise grid gap-2 py-6 md:grid-cols-[4rem_minmax(0,16rem)_minmax(0,1fr)] md:items-baseline md:gap-6"
           >
             <span className="font-mono text-[11px] text-lavender-soft">{step.n}</span>
@@ -53,7 +54,7 @@ export function Import() {
       </ol>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        <div className="glass glass-edge-light rise rounded-[22px] p-5">
+        <div data-d="1" className="glass glass-edge-light rise rounded-[22px] p-5">
           <p className="font-mono text-[10px] tracking-[0.12em] text-faint">
             STEP 2 · OCR TEXT
           </p>
@@ -66,7 +67,7 @@ export function Import() {
           </pre>
         </div>
 
-        <div className="glass glass-edge-light rise rounded-[22px] p-5">
+        <div data-d="2" className="glass glass-edge-light rise rounded-[22px] p-5">
           <p className="font-mono text-[10px] tracking-[0.12em] text-faint">
             STEP 3 · STRUCTURED BY AI
           </p>
