@@ -26,11 +26,6 @@ export const viewport: Viewport = {
 
 const themeScript = `(function(){try{if(localStorage.getItem("bellhop-theme")==="light"){document.documentElement.dataset.theme="light"}}catch(e){}})();`;
 
-// TEMPORARY bisect harness. Append one of these to the URL to disable one layer
-// at a time, which is far faster than guessing which one is misbehaving:
-//   #nograin  #noscene  #novignette  #noblur  #nofixed
-const debugScript = `(function(){var h=location.hash.replace("#","");if(h){document.documentElement.dataset.dbg=h}})();`;
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -40,12 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script dangerouslySetInnerHTML={{ __html: debugScript }} />
       </head>
       <body>
         <div className="scene" aria-hidden />
         <div className="grain" aria-hidden />
-        <div className="vignette" aria-hidden />
         {children}
       </body>
     </html>

@@ -126,15 +126,12 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.vignette {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(120% 80% at 50% 0%, transparent 40%, var(--color-canvas) 100%);
-}
+/* No vignette layer. A fixed full-viewport gradient that darkens the edges
+   caused a visible compositing artifact on Android Chrome: on a scroll
+   direction change the layer re-rastered late, and the magenta field at the
+   bottom of the scene showed through unattenuated as a pink block. Removing it
+   fixed that, and the scene reads better without it anyway. */
 
-/* --- The material ------------------------------------------------------ */
 /* --- The material ------------------------------------------------------
    These live in @layer components on purpose. Unlayered CSS outranks every
    layer, so declaring .glass outside a layer made its `position: relative`
@@ -229,37 +226,6 @@ body {
    browser to re-blur its backdrop on every frame. Blur is expensive; a 28px
    radius over a full-width panel is a lot of pixels to recompute 60 times a
    second. Anything that animates here needs to avoid backdrop-filter. */
-
-/* TEMPORARY bisect switches, driven by the URL hash. Remove once the scroll
-   artifact is tracked down. Each one disables a single suspect. */
-[data-dbg~="nograin"] .grain {
-  display: none;
-}
-
-[data-dbg~="noscene"] .scene {
-  display: none;
-}
-
-[data-dbg~="novignette"] .vignette {
-  display: none;
-}
-
-[data-dbg~="noblur"] .glass,
-[data-dbg~="noblur"] .glass-inset {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-[data-dbg~="nofixed"] .grain,
-[data-dbg~="nofixed"] .vignette,
-[data-dbg~="nofixed"] .scene {
-  position: absolute;
-}
-
-[data-dbg~="nofixed"] .solid-surface {
-  position: absolute;
-  bottom: 1rem;
-}
 
 @media (prefers-reduced-motion: reduce) {
   html {
