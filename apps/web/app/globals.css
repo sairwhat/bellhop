@@ -230,6 +230,37 @@ body {
    radius over a full-width panel is a lot of pixels to recompute 60 times a
    second. Anything that animates here needs to avoid backdrop-filter. */
 
+/* TEMPORARY bisect switches, driven by the URL hash. Remove once the scroll
+   artifact is tracked down. Each one disables a single suspect. */
+[data-dbg~="nograin"] .grain {
+  display: none;
+}
+
+[data-dbg~="noscene"] .scene {
+  display: none;
+}
+
+[data-dbg~="novignette"] .vignette {
+  display: none;
+}
+
+[data-dbg~="noblur"] .glass,
+[data-dbg~="noblur"] .glass-inset {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+[data-dbg~="nofixed"] .grain,
+[data-dbg~="nofixed"] .vignette,
+[data-dbg~="nofixed"] .scene {
+  position: absolute;
+}
+
+[data-dbg~="nofixed"] .solid-surface {
+  position: absolute;
+  bottom: 1rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
