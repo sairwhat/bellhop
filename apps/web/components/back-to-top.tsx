@@ -7,18 +7,18 @@ export function BackToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // The hero is the sentinel: once its bottom edge leaves the viewport there is
-    // enough scrolled content to be worth a way back up. IntersectionObserver
-    // rather than a scroll listener, which would fire every frame.
-    const sentinel = document.getElementById("top");
-    if (!sentinel) return;
+    // Observe a short marker near the top of the page, not a whole section. The
+    // hero is over a thousand pixels tall, so watching it would keep the control
+    // hidden until you had scrolled past everything in it.
+    const marker = document.getElementById("page-top");
+    if (!marker) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(!entry.isIntersecting),
-      { threshold: 0, rootMargin: "-72px 0px 0px 0px" }
+      { threshold: 0 }
     );
 
-    observer.observe(sentinel);
+    observer.observe(marker);
     return () => observer.disconnect();
   }, []);
 

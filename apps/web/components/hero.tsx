@@ -2,7 +2,16 @@ import { WeekGrid } from "@/components/week-grid";
 
 export function Hero() {
   return (
-    <section id="top" className="mx-auto max-w-6xl px-5 pt-16 pb-20 sm:pt-24">
+    <section id="top" className="relative mx-auto max-w-6xl px-5 pt-16 pb-20 sm:pt-24">
+      {/* Marker for the back-to-top control. Absolutely positioned so it adds no
+          layout height, but tall enough that the control appears after roughly
+          420px of scroll instead of after the whole hero. */}
+      <div
+        id="page-top"
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-0 h-[420px] w-px"
+      />
+
       <div className="max-w-3xl">
         <h1 className="text-[2.6rem] leading-[1] font-medium tracking-[-0.035em] text-balance sm:text-[4rem]">
           Your schedule,
