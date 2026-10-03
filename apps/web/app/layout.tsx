@@ -37,7 +37,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
-        <div className="scene" aria-hidden />
         <div className="grain" aria-hidden />
         {children}
       </body>
