@@ -210,6 +210,15 @@ body {
     box-shadow: var(--glass-sheen), var(--glass-drop);
   }
 
+  /* Opaque variant, used by the fixed back-to-top control. A fixed element must
+     not use .glass: it sits still while its backdrop rushes past, forcing a
+     re-blur every frame and leaving a smeared ghost of the backdrop behind it. */
+  .solid-surface {
+    background: color-mix(in oklab, var(--color-raised) 82%, var(--color-lavender));
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--glass-sheen), var(--glass-drop);
+  }
+
   .btn-primary {
     background: var(--color-lavender);
     color: var(--color-canvas);
