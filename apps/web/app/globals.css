@@ -83,6 +83,10 @@ body {
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  /* Positioning context for .scene, so it can span the full document rather
+     than a guessed number of viewport heights. */
+  position: relative;
+  min-height: 100vh;
 }
 
 ::selection {
@@ -105,25 +109,26 @@ body {
    background-attachment: fixed root background cannot scroll normally, so the
    browser repaints it every frame and the background visibly lags the scroll.
 
-   So this scrolls with the document like everything else. It is made tall
-   enough to colour the whole page, with fields spread down its length. */
+   So this scrolls with the document like everything else. It is inset to 0
+   inside a relative body, so it always spans the real document height no
+   matter how long the page grows. Hardcoding a height in vh left the bottom of
+   the page flat black once the content outgrew it. */
 .scene {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 260vh;
+  inset: 0;
   z-index: -2;
   pointer-events: none;
   background:
-    radial-gradient(40rem 36rem at 10% 4%, var(--field-1), transparent 62%),
-    radial-gradient(44rem 40rem at 90% 10%, var(--field-2), transparent 64%),
-    radial-gradient(52rem 46rem at 62% 22%, var(--field-3), transparent 62%),
-    radial-gradient(40rem 38rem at 8% 38%, var(--field-4), transparent 66%),
-    radial-gradient(46rem 42rem at 94% 52%, var(--field-2), transparent 64%),
-    radial-gradient(50rem 44rem at 18% 68%, var(--field-3), transparent 62%),
-    radial-gradient(44rem 40rem at 78% 84%, var(--field-1), transparent 64%),
-    radial-gradient(42rem 38rem at 30% 96%, var(--field-4), transparent 66%);
+    radial-gradient(40rem 36rem at 10% 2%, var(--field-1), transparent 62%),
+    radial-gradient(44rem 40rem at 90% 6%, var(--field-2), transparent 64%),
+    radial-gradient(52rem 46rem at 62% 14%, var(--field-3), transparent 62%),
+    radial-gradient(40rem 38rem at 8% 28%, var(--field-4), transparent 66%),
+    radial-gradient(46rem 42rem at 94% 40%, var(--field-2), transparent 64%),
+    radial-gradient(50rem 44rem at 16% 54%, var(--field-3), transparent 62%),
+    radial-gradient(44rem 40rem at 80% 68%, var(--field-1), transparent 64%),
+    radial-gradient(42rem 38rem at 26% 80%, var(--field-4), transparent 66%),
+    radial-gradient(46rem 42rem at 72% 93%, var(--field-3), transparent 64%),
+    radial-gradient(40rem 36rem at 18% 99%, var(--field-2), transparent 66%);
 }
 
 /* Grain. Without it the gradients read as plastic. Fixed and
