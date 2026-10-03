@@ -5,7 +5,7 @@ export function Features() {
     <section id="features" className="mx-auto max-w-6xl px-5 py-24">
       {/* The week board already appears in the hero. Repeating it here said
           nothing new, so this shows a feature instead: catching a clash. */}
-      <div className="rise grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
         <div>
           <h2 className="text-[1.9rem] leading-[1.08] font-medium tracking-[-0.025em] text-balance sm:text-[2.6rem]">
             Change one, change them all.
@@ -65,10 +65,10 @@ export function Features() {
 
       {/* Two-up tiles */}
       <div className="mt-24">
-        <h2 className="rise max-w-xl text-[1.9rem] leading-[1.08] font-medium tracking-[-0.025em] text-balance sm:text-[2.4rem]">
+        <h2 className="max-w-xl text-[1.9rem] leading-[1.08] font-medium tracking-[-0.025em] text-balance sm:text-[2.4rem]">
           The rest of the week, already wired in.
         </h2>
-        <p className="rise mt-5 max-w-lg text-[15px] leading-relaxed text-muted">
+        <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted">
           A focus block knows which class you are meant to be in. Unfinished tasks roll
           into tomorrow instead of piling up in a list you never open again.
         </p>
@@ -80,7 +80,7 @@ export function Features() {
       </div>
 
       {/* Conversation panel */}
-      <div className="glass glass-edge-light rise mt-24 rounded-[26px] p-6 sm:p-10">
+      <div className="glass glass-edge-light mt-24 rounded-[26px] p-6 sm:p-10">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
           <div>
             <h2 className="text-[1.7rem] leading-[1.1] font-medium tracking-[-0.02em] text-balance sm:text-[2.2rem]">

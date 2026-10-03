@@ -27,7 +27,7 @@ const RESOLVED = [
 export function Import() {
   return (
     <section id="how" className="mx-auto max-w-6xl px-5 py-24">
-      <div className="rise max-w-2xl">
+      <div className="max-w-2xl">
         <h2 className="text-[1.9rem] leading-[1.08] font-medium tracking-[-0.025em] text-balance sm:text-[2.6rem]">
           OCR gets the characters. AI reads the grid.
         </h2>
@@ -40,11 +40,11 @@ export function Import() {
       {/* Plain rows rather than three separate cards. Same information, far less
           repeated surface. */}
       <ol className="mt-12 divide-y divide-line border-y border-line">
-        {STEPS.map((step, index) => (
+        {STEPS.map((step) => (
           <li
             key={step.n}
-            data-d={String(index)}
-            className="rise grid gap-2 py-6 md:grid-cols-[4rem_minmax(0,16rem)_minmax(0,1fr)] md:items-baseline md:gap-6"
+
+            className="grid gap-2 py-6 md:grid-cols-[4rem_minmax(0,16rem)_minmax(0,1fr)] md:items-baseline md:gap-6"
           >
             <span className="font-mono text-[11px] text-lavender-soft">{step.n}</span>
             <h3 className="text-[15px] font-medium">{step.title}</h3>
@@ -54,7 +54,7 @@ export function Import() {
       </ol>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        <div data-d="1" className="glass glass-edge-light rise rounded-[22px] p-5">
+        <div className="glass glass-edge-light rounded-[22px] p-5">
           <p className="font-mono text-[10px] tracking-[0.12em] text-faint">
             STEP 2 · OCR TEXT
           </p>
@@ -67,7 +67,7 @@ export function Import() {
           </pre>
         </div>
 
-        <div data-d="2" className="glass glass-edge-light rise rounded-[22px] p-5">
+        <div className="glass glass-edge-light rounded-[22px] p-5">
           <p className="font-mono text-[10px] tracking-[0.12em] text-faint">
             STEP 3 · STRUCTURED BY AI
           </p>

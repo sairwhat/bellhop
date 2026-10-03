@@ -37,7 +37,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="glass glass-edge-light rise mt-14 rounded-[26px] p-2.5 sm:mt-20 sm:p-3">
+      <div className="glass glass-edge-light mt-14 rounded-[26px] p-2.5 sm:mt-20 sm:p-3">
         <WeekGrid />
       </div>
     </section>

@@ -214,49 +214,15 @@ body {
   }
 }
 
-/* Scroll-driven entrance. Chrome 115+. Sections lift in as they arrive, which
-   reads as the material settling rather than decoration animating.
-
-   data-d staggers siblings by offsetting the animation range, since a delay has
-   no meaning against a scroll timeline. */
-@supports (animation-timeline: view()) {
-  .rise {
-    animation: rise linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 62%;
-  }
-
-  .rise[data-d="1"] {
-    animation-range: entry 6% entry 68%;
-  }
-
-  .rise[data-d="2"] {
-    animation-range: entry 12% entry 74%;
-  }
-
-  .rise[data-d="3"] {
-    animation-range: entry 18% entry 80%;
-  }
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
+/* No scroll-driven reveal animations. They were janky on a phone because every
+   .glass surface animates a backdrop-filter, and moving an element forces the
+   browser to re-blur its backdrop on every frame. Blur is expensive; a 28px
+   radius over a full-width panel is a lot of pixels to recompute 60 times a
+   second. Anything that animates here needs to avoid backdrop-filter. */
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .rise {
-    animation: none;
   }
 
   .glass-hover {
