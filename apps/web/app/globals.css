@@ -131,16 +131,12 @@ body {
     radial-gradient(40rem 36rem at 18% 99%, var(--field-2), transparent 66%);
 }
 
-/* Grain. Without it the gradients read as plastic. Fixed and
-   pointer-events-none so it never triggers a repaint on scroll. */
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: var(--grain-opacity);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* The grain layer was removed. It was an SVG feTurbulence filter on a fixed
+   full-viewport element, and it was the one layer present in every build that
+   showed the scroll artifact and absent from the only build that did not. SVG
+   filter rasterisation on mobile GPUs is expensive and unreliable, and 5% noise
+   was not worth chasing. The gradients lose a little of their anti-plastic
+   texture as a result. */
 
 /* --- The material ------------------------------------------------------
    These live in @layer components on purpose. Unlayered CSS outranks every

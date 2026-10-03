@@ -38,7 +38,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <div className="scene" aria-hidden />
-        <div className="grain" aria-hidden />
         {children}
       </body>
     </html>
