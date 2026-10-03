@@ -69,6 +69,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* The nav is sticky and about 80px tall, so every anchor jump would otherwise
+     land with the section heading hidden underneath it. */
+  scroll-padding-top: 6rem;
 }
 
 body {
