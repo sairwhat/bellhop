@@ -8,7 +8,7 @@ export function Nav() {
           <span className="grid size-7 place-items-center rounded-full bg-lavender text-[13px] font-semibold text-canvas">
             B
           </span>
-          <span className="text-[14px] font-medium tracking-tight">Schedly</span>
+          <span className="text-[14px] font-medium tracking-tight">Bellhop</span>
         </a>
 
         <div className="hidden items-center gap-7 text-[13px] text-muted sm:flex">
@@ -25,7 +25,7 @@ export function Nav() {
             href="#count-me-in"
             className="btn-primary rounded-full px-4 py-2 text-[13px] font-medium whitespace-nowrap"
           >
-            Count me in
+            Get Started
           </a>
           <ThemeToggle />
         </div>

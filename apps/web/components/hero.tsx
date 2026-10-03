@@ -1,4 +1,3 @@
-import { WaitlistForm } from "@/components/waitlist-form";
 import { WeekGrid } from "@/components/week-grid";
 
 export function Hero() {
@@ -12,12 +11,20 @@ export function Hero() {
         </h1>
 
         <p className="mt-7 max-w-lg text-[16px] leading-relaxed text-muted">
-          Photograph the grid your school printed. Schedly reads the text, sorts it into
+          Photograph the grid your school printed. Bellhop reads the text, sorts it into
           an editable week, and keeps your focus blocks and tasks attached to it.
         </p>
 
-        <div className="mt-9 max-w-md">
-          <WaitlistForm />
+        <div className="mt-9 flex flex-wrap items-center gap-3">
+          <a href="#count-me-in" className="btn-primary rounded-full px-6 py-3 text-[14px] font-medium">
+            Get Started
+          </a>
+          <a
+            href="#how"
+            className="glass rounded-full px-6 py-3 text-[14px] font-medium text-ink"
+          >
+            See how it works
+          </a>
         </div>
       </div>
 

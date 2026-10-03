@@ -1,28 +1,27 @@
 import { FocusCard, TasksCard } from "@/components/study-cards";
-import { WeekGrid } from "@/components/week-grid";
 
 export function Features() {
   return (
     <section id="features" className="mx-auto max-w-6xl px-5 py-24">
-      {/* Full-bleed band: text left, product right */}
-      <div className="rise grid items-center gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
+      {/* The week board already appears in the hero. Repeating it here said
+          nothing new, so this shows a feature instead: catching a clash. */}
+      <div className="rise grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
         <div>
           <h2 className="text-[1.9rem] leading-[1.08] font-medium tracking-[-0.025em] text-balance sm:text-[2.6rem]">
             Change one, change them all.
           </h2>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
+          <p className="mt-5 text-[15px] leading-relaxed text-muted">
             Move a class to Thursday and every instance follows it. Rename a course once
-            instead of editing six separate meetings. Overlaps get flagged before your
-            registrar does.
+            instead of editing six separate meetings.
           </p>
 
-          <dl className="mt-8 space-y-3">
+          <dl className="mt-8 divide-y divide-line border-y border-line">
             {[
-              ["Conflict detection", "Instant"],
               ["Term boundaries", "Per course"],
               ["Colour coding", "Automatic"],
+              ["Edits", "Propagate everywhere"],
             ].map(([term, value]) => (
-              <div key={term} className="flex items-baseline justify-between border-b border-line pb-3">
+              <div key={term} className="flex items-baseline justify-between py-3">
                 <dt className="text-[13.5px] text-muted">{term}</dt>
                 <dd className="font-mono text-[11px] text-faint">{value}</dd>
               </div>
@@ -30,8 +29,37 @@ export function Features() {
           </dl>
         </div>
 
-        <div className="glass glass-edge-light rounded-[26px] p-2.5">
-          <WeekGrid />
+        <div className="glass glass-edge-light rounded-[22px] p-6">
+          <div className="flex items-center gap-2.5">
+            <span aria-hidden className="size-1.5 rounded-full bg-amber-400" />
+            <p className="font-mono text-[10px] tracking-[0.12em] text-faint">
+              CONFLICT DETECTED
+            </p>
+          </div>
+
+          <p className="mt-5 text-[14px] leading-relaxed">
+            <span className="font-medium">Organic Chemistry</span> and{" "}
+            <span className="font-medium">Modern World History</span> both start at 1:15 PM
+            on Wednesday.
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {[
+              ["Organic Chemistry", "Sci-112"],
+              ["Modern World History", "A-009"],
+            ].map(([course, room]) => (
+              <span
+                key={course}
+                className="rounded-full border border-line px-3 py-1.5 text-[12px] text-muted"
+              >
+                {course} · {room}
+              </span>
+            ))}
+          </div>
+
+          <p className="mt-6 border-t border-line pt-4 text-[13px] text-faint">
+            One of these is wrong. Bellhop asks which, instead of quietly overwriting one.
+          </p>
         </div>
       </div>
 
